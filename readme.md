@@ -7,6 +7,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Setting Route super-admin
+Route::namespace('super-admin')->prefix('super-admin')->group(function(){
+	foreach (File::allFiles(__DIR__.'/super-admin') as $partial) {
+		require $partial->getPathname();
+	}
+});
+
+## Setting Route user-admin
+Route::namespace('user-admin')->prefix('user-admin')->group(function(){
+	foreach (File::allFiles(__DIR__.'/user-admin') as $partial) {
+		require $partial->getPathname();
+	}
+});
+
+## Setting Front-end 
+Route::namespace('web')->prefix('web')->group(function(){
+	foreach (File::allFiles(__DIR__.'/web') as $partial) {
+		require $partial->getPathname();
+	}
+});
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
